@@ -1,4 +1,4 @@
-package com.rawnak.weatherappmvvm.network
+package com.ruet_cse_1503008.rawnak.androidtest.network
 
 import com.ruet_cse_1503008.rawnak.androidtest.network.MyResponse
 import retrofit2.Call

@@ -1,13 +1,10 @@
-package com.rawnak.weatherappmvvm.network
+package com.ruet_cse_1503008.rawnak.androidtest.network
 
 import com.google.gson.GsonBuilder
 //import com.ihsanbal.logging.Level
 //import com.ihsanbal.logging.LoggingInterceptor
-import okhttp3.OkHttpClient
-import okhttp3.internal.platform.Platform
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.Executors
 
 object RetrofitClient {
 

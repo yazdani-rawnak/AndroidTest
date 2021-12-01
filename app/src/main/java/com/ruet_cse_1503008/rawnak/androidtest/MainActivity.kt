@@ -2,8 +2,8 @@ package com.ruet_cse_1503008.rawnak.androidtest
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.rawnak.weatherappmvvm.network.ApiInterface
-import com.rawnak.weatherappmvvm.network.RetrofitClient
+import com.ruet_cse_1503008.rawnak.androidtest.network.ApiInterface
+import com.ruet_cse_1503008.rawnak.androidtest.network.RetrofitClient
 import com.ruet_cse_1503008.rawnak.androidtest.network.MyResponse
 import retrofit2.Call
 import retrofit2.Callback
