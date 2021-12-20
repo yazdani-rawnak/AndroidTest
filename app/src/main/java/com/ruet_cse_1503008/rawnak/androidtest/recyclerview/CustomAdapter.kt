@@ -12,7 +12,10 @@ import com.ruet_cse_1503008.rawnak.androidtest.R
 import com.ruet_cse_1503008.rawnak.androidtest.network.MyResponse
 
 //class CustomAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
-class CustomAdapter(private val mList: List<MyResponse>, val context: Context) :
+class CustomAdapter(
+    private val mList: List<MyResponse>, val context: Context,
+    private val listener: OnItemClickListener
+) :
     RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
     // create new views
@@ -35,7 +38,7 @@ class CustomAdapter(private val mList: List<MyResponse>, val context: Context) :
 //        holder.imageView.setImageResource(itemsViewModel.image)
         Glide.with(context).load(itemsViewModel.downloadUrl)
             .placeholder(R.drawable.ic_baseline_downloading_24)
-            .error(R.drawable.ic_baseline_error_outline_24)
+//            .error(R.drawable.ic_baseline_error_outline_24)
             .into(holder.imageView)
 
         // sets the text to the textview from our itemHolder class
@@ -50,8 +53,23 @@ class CustomAdapter(private val mList: List<MyResponse>, val context: Context) :
     }
 
     // Holds the views for adding it to image and text
-    class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        // itemView comes from RecyclerView
         val imageView: ImageView = itemView.findViewById(R.id.imageview)
         val textView: TextView = itemView.findViewById(R.id.textView)
+
+        init {
+            itemView.setOnClickListener {
+//                val position = adapterPosition
+                val position = absoluteAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    listener.onItemClick(position)
+                }
+            }
+        }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
     }
 }

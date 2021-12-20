@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -72,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun editRecyclerView(){
+    fun editRecyclerView() {
         // getting the recyclerview by its id
         val recyclerview = findViewById<RecyclerView>(R.id.recyclerview)
 
@@ -80,17 +81,33 @@ class MainActivity : AppCompatActivity() {
         recyclerview.layoutManager = LinearLayoutManager(this)
 
         // ArrayList of class ItemsViewModel
-        val data = ArrayList<ItemsViewModel>()
+//        val data = ArrayList<ItemsViewModel>()
 
         // This loop will create 20 Views containing
         // the image with the count of view
-        for (i in 1..20) {
-            data.add(ItemsViewModel(i, "Item " + i))
-        }
+//        for (i in 1..20) {
+//            data.add(ItemsViewModel(i, "Item " + i))
+//        }
 
         // This will pass the ArrayList to our Adapter
 //        val adapter = CustomAdapter(data)
-        val adapter = CustomAdapter(getJsonData(), applicationContext)
+        var list = getJsonData()
+        val adapter = CustomAdapter(
+            list,
+            applicationContext,
+            object : CustomAdapter.OnItemClickListener {
+                override fun onItemClick(position: Int) {
+                    Toast.makeText(
+                        applicationContext,
+                        (position + 1).toString().plus(" NO. image"),
+                        Toast.LENGTH_LONG
+                    ).show()
+                    val clickedItem = list[position]
+                    clickedItem.author = "Clicked"
+//                    adapter.notifyItemChanged(position)
+                    recyclerview.adapter?.notifyItemChanged(position)
+                }
+            })
 
         // Setting the Adapter with the recyclerview
         recyclerview.adapter = adapter
