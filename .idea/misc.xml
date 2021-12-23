@@ -7,6 +7,9 @@
         <entry key="app/src/main/res/drawable/ic_baseline_error_outline_24.xml" value="0.21794871794871795" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18796296296296297" />
         <entry key="app/src/main/res/layout/card_view_design.xml" value="0.20520833333333333" />
+        <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.19114583333333332" />
+        <entry key="app/src/main/res/layout/fragment_gallery2.xml" value="0.20520833333333333" />
+        <entry key="app/src/main/res/layout/fragment_single_image.xml" value="0.20520833333333333" />
       </map>
     </option>
   </component>

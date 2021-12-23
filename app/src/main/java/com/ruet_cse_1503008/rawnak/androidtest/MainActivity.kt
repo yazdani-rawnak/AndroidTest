@@ -54,7 +54,11 @@ class MainActivity : AppCompatActivity() {
                     println("responsePrint $jsonString")
 //                    -----------------------------------------------------
                     saveSharedPrefData(jsonString)
-                    editRecyclerView()
+//                    editRecyclerView()
+
+                    supportFragmentManager.beginTransaction()
+                        .add(R.id.fragmentContainerView, GalleryFragment2())
+                        .commit()
 
 //                    Glide.with(applicationContext).load(response.body()?.get(0)?.downloadUrl).into(imageView!!)
                 }
@@ -69,7 +73,10 @@ class MainActivity : AppCompatActivity() {
 //            getJsonData()
             Log.d("my_json_response_log", getJsonData().toString())
 //            Glide.with(applicationContext).load(getJsonData().get(0).downloadUrl).into(imageView!!)
-            editRecyclerView()
+//            editRecyclerView()
+            supportFragmentManager.beginTransaction()
+                .add(R.id.fragmentContainerView, GalleryFragment2())
+                .commit()
         }
     }
 
